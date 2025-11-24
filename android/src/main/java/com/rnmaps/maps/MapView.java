@@ -83,6 +83,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutionException;
 
 import com.rnmaps.fabric.event.*;
@@ -142,12 +143,12 @@ public class MapView extends com.google.android.gms.maps.MapView implements Goog
             "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_COARSE_LOCATION"};
 
     private final List<MapFeature> features = new ArrayList<>();
-    private final Map<Marker, MapMarker> markerMap = new HashMap<>();
-    private final Map<Polyline, MapPolyline> polylineMap = new HashMap<>();
-    private final Map<Polygon, MapPolygon> polygonMap = new HashMap<>();
-    private final Map<GroundOverlay, MapOverlay> overlayMap = new HashMap<>();
-    private final Map<TileOverlay, MapHeatmap> heatmapMap = new HashMap<>();
-    private final Map<TileOverlay, MapGradientPolyline> gradientPolylineMap = new HashMap<>();
+    private final Map<Marker, MapMarker> markerMap = new ConcurrentHashMap<>();
+    private final Map<Polyline, MapPolyline> polylineMap = new ConcurrentHashMap<>();
+    private final Map<Polygon, MapPolygon> polygonMap = new ConcurrentHashMap<>();
+    private final Map<GroundOverlay, MapOverlay> overlayMap = new ConcurrentHashMap<>();
+    private final Map<TileOverlay, MapHeatmap> heatmapMap = new ConcurrentHashMap<>();
+    private final Map<TileOverlay, MapGradientPolyline> gradientPolylineMap = new ConcurrentHashMap<>();
     private final GestureDetector gestureDetector;
     private boolean paused = false;
     private boolean destroyed = false;
